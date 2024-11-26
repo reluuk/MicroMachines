@@ -43,11 +43,9 @@
             -Steuerung durch die Joysticks war invertiert
 
 ### KW48: 
--Erstellen eines GitHub-Repository 
-
--Skizzieren eines Controller Layouts zur zukünftigen Planung
-
--Erstellen einer Mindmap zur Projektzielübersicht
+    -Erstellen eines GitHub-Repository
+    -Skizzieren eines Controller Layouts zur zukünftigen Planung
+    -Erstellen einer Mindmap zur Projektzielübersicht
 
 
                                                   
