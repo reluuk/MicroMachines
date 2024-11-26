@@ -3,14 +3,12 @@
 
 ## Tätigkeitsnachweis:
 ### KW44: 
--Bestellung Einzelteile(ESP32-Frenove Kits, Batteriehalter,H-Brücken, Joysticks etc.)
-
--Bestellung des RC-Auto Bausatz
+    -Bestellung Einzelteile(ESP32-Frenove Kits, Batteriehalter,H-Brücken, Joysticks etc.)
+    -Bestellung des RC-Auto Bausatz
 
 ### KW45: 
--Auslesen der Mac-Adressen
-
--Stecken der Schaltung zum Auslesen der Joysticks
+    -Auslesen der Mac-Adressen
+    -Stecken der Schaltung zum Auslesen der Joysticks
 
 ### KW46: 
 #### Zusammenbau des RC-Auto Bausatzes:
