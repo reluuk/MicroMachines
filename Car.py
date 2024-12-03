@@ -20,9 +20,9 @@ motor_in2 = Pin(26, Pin.OUT)
 motor_pwm = PWM(Pin(25), freq=2000)
 
 # Konfiguration für den ADC
-adc = ADC(Pin(32))         # ADC an GPIO 34
-adc.width(ADC.WIDTH_12BIT)  # 12-bit Auflösung (0-4095)
-adc.atten(ADC.ATTN_11DB)    # 11dB Attenuation -> max ~3.6V
+adc_battery = ADC(Pin(32))         # ADC an GPIO 32, darf kein Pin sein der für die Kamera genutzt wird
+adc_battery.width(ADC.WIDTH_12BIT)  # 12-bit Auflösung (0-4095)
+adc_battery.atten(ADC.ATTN_11DB)    # 11dB Attenuation -> max ~3.6V
 
 # Servo-Setup für die Lenkung
 servo_pin = PWM(Pin(15), freq=50)  # 50 Hz für Servo
@@ -63,8 +63,8 @@ def drive_car(y_cmd):
     motor_pwm.duty(abs(y_cmd) * 10)
 
 def battery_to_controller_command():
-    # Lese Joystickwerte und mappe auf Bereich -100 bis +100
-    voltage = Battery_Voltage.read_battery_voltage(adc.read())
+    # Lese Batteriewerte und Formatiere Spannung auf Ingeterwert im mV Bereich
+    voltage = Battery_Voltage.read_battery_voltage(adc_battery.read())
     percentage = Battery_Voltage.calculate_battery_percentage(voltage)
     return f"{int(round(voltage, 3)*1000)},{percentage}"
 
