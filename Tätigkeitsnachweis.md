@@ -164,7 +164,7 @@ ESP-NOW Receiver
   - passt nicht, zur info der adc2 wird auch ausgelesen und schon vorher auf -100 bis 100 skaliert
   - guter ansatz, ich möchte aber wenn adc1 0 ist das adc2 -100 bis 100 auf adc2 -30 bis 30 umgerechnet wird um den vollen wertebereich auszuschöpfen
 
-https://github.com/stlehmann/micropython-ssd1306/blob/master/ssd1306.py
+- [OLED library]https://github.com/stlehmann/micropython-ssd1306/blob/master/ssd1306.py
 ## KW50 _(09. - 15.12.2024)_
 ### Aktivitäten:
 - Zielsetzung:
