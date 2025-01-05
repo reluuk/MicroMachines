@@ -5,7 +5,7 @@
 - Niklas Bräu
 - David Wolf
 
-## KW44
+## KW44 _(28.10. - 03.11.2024)_
 ### Aktivitäten:
 - Bestellung Einzelteile(ESP32-Frenove Kits, Batteriehalter,H-Brücken, Joysticks etc.) (Bräu)
 - Bestellung RC-Auto Bausatz (Bräu)
@@ -22,7 +22,7 @@ LED blinken lassen
         led.off()
         time.sleep_ms(100)
 
-## KW45
+## KW45 _(04. - 10.11.2024)_
 ### Aktivitäten:
 - Auslesen der Mac-Adressen für ESP-NOW (alle)
 - Probieren der Kommunikation zwischen den ESP32 (alle)
@@ -78,7 +78,7 @@ ESP-NOW Receiver
 ### Quellen:
 https://stackoverflow.com/questions/71902740/how-to-retrieve-and-format-wifi-mac-address-in-micropython-on-esp32
 https://docs.micropython.org/en/latest/library/espnow.html
-## KW46
+## KW46 _(11. - 17.11.2024)_
 ### Aktivitäten:
 - Zusammenbau des RC-Autobausatzes (alle)
 - Stecken der Schaltung zur Ansteuerung des Servomotors (Bräu)
@@ -89,7 +89,7 @@ https://docs.micropython.org/en/latest/library/espnow.html
 [Niklas]
 ### Quellen:
 [Niklas]
-## KW47
+## KW47 _(18. - 24.11.2024)_
 ### Aktivitäten:
 - Montage der Schaltung zur Ansteuerung vom RC-Auto auf den Auto (Bräu)
   - Verdrahtung der Schaltung mit Motor und Servo-Motor
@@ -119,7 +119,7 @@ https://docs.micropython.org/en/latest/library/espnow.html
 - Siehe git history
 ### Quellen:
 ChatGPT: wie passe ich ein joystick signal von 0 bis 4096 auf ein servowert von 40-140 an
-## KW48
+## KW48 _(25.11. - 01.12.2024)_
 ### Aktivitäten:
 - Erstellen eines GitHub-Repository (Reif)
 - Skizzieren eines Controller-Layouts zur zukünftigen Planung (Bräu)
@@ -132,7 +132,7 @@ ChatGPT: wie passe ich ein joystick signal von 0 bis 4096 auf ein servowert von 
 ### Code:
         if y_cmd > -10 and y_cmd < 10:
         y_cmd = 0
-## KW49
+## KW49 _(02. - 08.12.2024)_
 ### Aktivitäten:
 - Automatisches ausführen der Car und Controller Programme mit boot.py auf den ESP32
 - Entwicklung einer benutzerdefinierten Platine für den Controller (Bräu)
@@ -165,7 +165,7 @@ ChatGPT: wie passe ich ein joystick signal von 0 bis 4096 auf ein servowert von 
   - guter ansatz, ich möchte aber wenn adc1 0 ist das adc2 -100 bis 100 auf adc2 -30 bis 30 umgerechnet wird um den vollen wertebereich auszuschöpfen
 
 https://github.com/stlehmann/micropython-ssd1306/blob/master/ssd1306.py
-## KW50
+## KW50 _(09. - 15.12.2024)_
 ### Aktivitäten:
 - Zielsetzung:
   - das Auto wird fest verdrahtet/verlötet (Reif)
@@ -178,7 +178,7 @@ https://github.com/stlehmann/micropython-ssd1306/blob/master/ssd1306.py
 - Siehe git history
 ### Quellen:
 https://github.com/Freenove/Freenove_ESP32_WROOM_Board/tree/main/Python/Python_Libraries
-## KW51
+## KW51 _(16. - 22.12.2024)_
 ### Aktivitäten:
 - Lötarbeiten am Auto: (Reif)
   - Steckplatz für ESP32 auf Lochrasterplatine angebracht
@@ -192,10 +192,10 @@ https://github.com/Freenove/Freenove_ESP32_WROOM_Board/tree/main/Python/Python_L
 https://components101.com/modules/l293n-motor-driver-module
 https://www.digikey.de/de/products/detail/umw/78M05/17635217
 - ChatGPT: wie regele ich eine spannung von 12v auf 5v mit einem 78m05
-## KW52
+## KW52 _(23. - 29.12.2024)_
 ### Aktivitäten:
 - Lötarbeiten am Auto: (Reif)
-  - Spannungteiler für Batteriespannungsmessung auf ESP32-Platine angebracht
+  - Spannungsteiler für Batteriespannungsmessung auf ESP32-Platine angebracht
   - PCB-Schraubklemmen für Anschluss der Komponenten auf ESP32-Platine angebracht
   - Verbindungen von PCB-Schraubklemmen zu ESP32 an der ESP32-Platine mit Kupferlackdraht erstellt
 
