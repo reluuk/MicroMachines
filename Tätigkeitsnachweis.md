@@ -76,8 +76,8 @@ ESP-NOW Receiver
             if msg == b'end':
                 break
 ### Quellen:
-https://stackoverflow.com/questions/71902740/how-to-retrieve-and-format-wifi-mac-address-in-micropython-on-esp32
-https://docs.micropython.org/en/latest/library/espnow.html
+- [ESP32 Mac-Adresse auslesen]https://stackoverflow.com/questions/71902740/how-to-retrieve-and-format-wifi-mac-address-in-micropython-on-esp32
+- [ESP-NOW Tutorial]https://docs.micropython.org/en/latest/library/espnow.html
 ## KW46 _(11. - 17.11.2024)_
 ### Aktivitäten:
 - Zusammenbau des RC-Autobausatzes (alle)
@@ -86,9 +86,9 @@ https://docs.micropython.org/en/latest/library/espnow.html
 - Bau eines Prototyps Controller aus Bastelholz (Bräu)
   - Montieren vom Steckbrett mit ESP 32 und Joysticks auf den Prototypen
 ### Code:
-[Niklas]
+- [Niklas]
 ### Quellen:
-[Niklas]
+- [Niklas]
 ## KW47 _(18. - 24.11.2024)_
 ### Aktivitäten:
 - Montage der Schaltung zur Ansteuerung vom RC-Auto auf den Auto (Bräu)
@@ -118,7 +118,7 @@ https://docs.micropython.org/en/latest/library/espnow.html
 ### Code:
 - Siehe git history
 ### Quellen:
-ChatGPT: wie passe ich ein joystick signal von 0 bis 4096 auf ein servowert von 40-140 an
+- ChatGPT: wie passe ich ein joystick signal von 0 bis 4096 auf ein servowert von 40-140 an
 ## KW48 _(25.11. - 01.12.2024)_
 ### Aktivitäten:
 - Erstellen eines GitHub-Repository (Reif)
@@ -177,7 +177,7 @@ https://github.com/stlehmann/micropython-ssd1306/blob/master/ssd1306.py
 ### Code:
 - Siehe git history
 ### Quellen:
-https://github.com/Freenove/Freenove_ESP32_WROOM_Board/tree/main/Python/Python_Libraries
+- [LCD libraries]https://github.com/Freenove/Freenove_ESP32_WROOM_Board/tree/main/Python/Python_Libraries
 ## KW51 _(16. - 22.12.2024)_
 ### Aktivitäten:
 - Lötarbeiten am Auto: (Reif)
@@ -189,8 +189,8 @@ https://github.com/Freenove/Freenove_ESP32_WROOM_Board/tree/main/Python/Python_L
   - da mehrere H-Brücken bestellt wurden, wurde der 5V Spannungsregler (78M05) einer H-Brücke auf eine extra Lochrasterplatine gelötet, das wird die Spannungsversorgung für den Servo
   - Online Schaltplan der H-Brücke war komplett falsch, ChatGPT liefert einen richtigen Schaltplan
 ### Quellen:
-https://components101.com/modules/l293n-motor-driver-module
-https://www.digikey.de/de/products/detail/umw/78M05/17635217
+- [H-Brücke]https://components101.com/modules/l293n-motor-driver-module
+- [Datenblatt Spannungsregler 78M05]https://www.digikey.de/de/products/detail/umw/78M05/17635217
 - ChatGPT: wie regele ich eine spannung von 12v auf 5v mit einem 78m05
 ## KW52 _(23. - 29.12.2024)_
 ### Aktivitäten:
