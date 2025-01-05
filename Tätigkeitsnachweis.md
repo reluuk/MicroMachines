@@ -64,11 +64,12 @@
     -Entwicklung der Schaltung um 12V LiPo Batterie mit ESP32 zu messen: (Wolf)
         -Spannungsteiler mit R1 = 30kΩ und R2 = 10kΩ
         -ESP32 wird parallel zu R2 angeschlossen
+    -Verbindungsstatus ESP-NOW wird auf OLED Display angezeit
 
 ### KW50:
     Zielsetzung:
         -das Auto wird fest verdrahtet/verlötet (Reif)
-        -das Auto bekommt noch eine LCD-Anzeige für die Batteriespannung und zur Überprüfung der ESP-NOW Verbindung
+        -das Auto bekommt noch eine LCD-Anzeige für den Batteriestatus und zur Überprüfung der ESP-NOW Verbindung
         -der Controller wird noch fertig gestellt (Bräu)
         -eine benutzerdefinierte Platine für den Controller wird nicht mehr bestellt, wegen zu langer Lieferzeit
     
@@ -88,8 +89,8 @@
 
 ### KW52:
     Lötarbeiten am Auto:
-        -Spannungteiler für Batteriespannungsmessung auf Lochrasterplatine angebracht
-        -PCB-Schraubklemmen für Anschluss der Komponenten an ESP32 auf Lochrasterplatine angebracht
-        -Verbindungen von PCB-Schraubklemmen zu ESP32 an der Lochrasterplatine mit Kupferlackdraht erstellt
-        -Verbindungen der ESP32 Platine, H-Brücke, DC Motor, Servo Motor, 5V Platine, LCD und Batterie mit Verdrahtungsleitungen erstellt
+        -Spannungteiler für Batteriespannungsmessung auf ESP32-Platine angebracht
+        -PCB-Schraubklemmen für Anschluss der Komponenten auf ESP32-Platine angebracht
+        -Verbindungen von PCB-Schraubklemmen zu ESP32 an der ESP32-Platine mit Kupferlackdraht erstellt
+        -Verbindungen der ESP32-Platine, H-Brücke, DC Motor, Servo Motor, 5V Platine, LCD und Batterie mit Verdrahtungsleitungen erstellt
     Auto fertig gestellt
