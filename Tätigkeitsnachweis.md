@@ -5,7 +5,7 @@
 - Niklas Bräu
 - David Wolf
 
-## KW44: 
+## KW44
 ### Aktivitäten:
     -Bestellung Einzelteile(ESP32-Frenove Kits, Batteriehalter,H-Brücken, Joysticks etc.) (Bräu)
     -Bestellung des RC-Auto Bausatz (Bräu)
@@ -20,7 +20,7 @@
         led.off()
         time.sleep_ms(100)
 
-## KW45: 
+## KW45
 ### Aktivitäten:
     -Auslesen der Mac-Adressen für ESP-NOW (alle)
     -Probieren der Kommunikation zwischen den ESP32 (alle)
@@ -72,7 +72,7 @@
 ### Quellen:
     https://stackoverflow.com/questions/71902740/how-to-retrieve-and-format-wifi-mac-address-in-micropython-on-esp32
     https://docs.micropython.org/en/latest/library/espnow.html
-## KW46: 
+## KW46
 ### Aktivitäten:
     -Zusammenbau des RC-Auto Bausatzes (alle)
     -Stecken der Schaltung zur Ansteuerung des Servomotors (Bräu)
@@ -83,7 +83,7 @@
 [Niklas]
 ### Quellen:
 [Niklas]
-## KW47: 
+## KW47
     -Montage der Schaltung zur Ansteuerung vom RC-Auto auf den Auto (Bräu)
         -Verdrahtung der Schaltung mit Motor und Servo-Motor
         -Einbindung vom Akku in die Schaltung
@@ -115,7 +115,7 @@
 - Siehe git history
 ### Quellen:
 [Niklas]
-## KW48: 
+## KW48
     -Erstellen eines GitHub-Repository (Reif)
     -Skizzieren eines Controller Layouts zur zukünftigen Planung (Bräu)
     -Erstellen einer Mindmap zur Projektzielübersicht (Bräu)
@@ -127,7 +127,7 @@
 ### Code:
         if y_cmd > -10 and y_cmd < 10:
         y_cmd = 0
-## KW49:
+## KW49
     -Entwicklung einer benutzerdefinierten Platine für den Controller (Bräu)
     -Entwicklung des Codes um Batteriewerte des Autos am Controller anzeigen lassen: (Reif) 
         -Batteriespannungsmessung(V) und Kapazitätsumwandlung(%) -> measure_Class.py erstellt 
@@ -138,7 +138,7 @@
         -ESP32 wird parallel zu R2 angeschlossen
     -Verbindungsstatus ESP-NOW wird auf OLED Display angezeit
 
-### KW50:
+## KW50
     Zielsetzung:
         -das Auto wird fest verdrahtet/verlötet (Reif)
         -das Auto bekommt noch eine LCD-Anzeige für den Batteriestatus und zur Überprüfung der ESP-NOW Verbindung
@@ -147,7 +147,7 @@
     
     -Erste Lötarbeiten am Auto erledigt (Reif)
 
-### KW51:
+## KW51
     Problem:
         -5V Ausgang der H-Brücke am Auto kann nur 500mA liefern, das ist zu wenig um damit den Servo und ESP32 laufen zu lassen
     Lösung:
@@ -159,7 +159,7 @@
         -Feinsicherungen als Kurzschlussschutz für Batterie in Schaltkreis integriert
         -An/Aus Schalter von Chassis-Kit in Schaltkreis integriert
 
-### KW52:
+## KW52
     Lötarbeiten am Auto:
         -Spannungteiler für Batteriespannungsmessung auf ESP32-Platine angebracht
         -PCB-Schraubklemmen für Anschluss der Komponenten auf ESP32-Platine angebracht
