@@ -8,7 +8,7 @@
 ## KW44
 ### Aktivitäten:
 - Bestellung Einzelteile(ESP32-Frenove Kits, Batteriehalter,H-Brücken, Joysticks etc.) (Bräu)
-- Bestellung des RC-Auto Bausatz (Bräu)
+- Bestellung RC-Auto Bausatz (Bräu)
 - erstes Mal ESP32 angeschlossen und LEDs blinken lassen (Reif)
 ### Code:
 LED blinken lassen
@@ -122,7 +122,7 @@ ChatGPT: wie passe ich ein joystick signal von 0 bis 4096 auf ein servowert von 
 ## KW48
 ### Aktivitäten:
 - Erstellen eines GitHub-Repository (Reif)
-- Skizzieren eines Controller Layouts zur zukünftigen Planung (Bräu)
+- Skizzieren eines Controller-Layouts zur zukünftigen Planung (Bräu)
 - Erstellen einer Mindmap zur Projektzielübersicht (Bräu)
 - Anpassung der Radstellung an der Lenkeraufhängung (Wolf)
 - Anpassung der Servo Einstellung im Car Programm (Reif + Wolf)
@@ -143,7 +143,8 @@ ChatGPT: wie passe ich ein joystick signal von 0 bis 4096 auf ein servowert von 
 - Entwicklung der Schaltung um 12V LiPo Batterie mit ESP32 zu messen: (Wolf)
     - Spannungsteiler mit R1 = 30kΩ und R2 = 10kΩ
     - ESP32 wird parallel zu R2 angeschlossen
-- Verbindungsstatus ESP-NOW wird auf OLED Display angezeigt
+- Verbindungsstatus ESP-NOW wird auf OLED Display angezeigt (Reif) 
+- die Kraft des Motors mit einem Potentiometer am Controller regeln (Reif) 
 ### Probleme und Lösungen:
 - nicht alle GPIO Pins können einwandfrei eine Spannung messen, GPIO Pin 32 wurde ausgewählt
 - die vom ESP32 gemessene Spannung am Spannungsteiler passt nicht zu der Eingangsspannung
@@ -156,7 +157,12 @@ ChatGPT: wie passe ich ein joystick signal von 0 bis 4096 auf ein servowert von 
 - ChatGPT: wie lässt man ein python programm ein anderes python file ausführen?
 - ChatGPT: spannung einer 12v 3s lipo batterie messen und ladezustand anzeigen mit esp32 und micropython
   - Das Programm rechnet die gemessene Spannung nicht richtig auf die Eingangsspannung um, bei gemessen: 2,6V gibt es 10,6V aus aber es sollten 12,2V sein
-  - ChatGPT: wie lasse ich aus den letzten 20 gemessenen Werten einen Durchschnittswert errechnen
+  - wie lasse ich aus den letzten 20 gemessenen Werten einen Durchschnittswert errechnen
+- ChatGPT: wie lasse ich ein 0.96 inch OLED SSD1306 display I2C 128 x 64 pixels Display mit einem ESP32 mit micropython werte anzeigen?
+  - was kann ich alles damit machen und kann ich die Schriftgöße und art ändern?
+- ChatGPT: Ich möchte in micropython mit einem esp32 einen adc1 wert der auf 0 bis 100 umgerechnet wurde einfluss nehmen lassen auf einen adc2 wert der von -100 bis 100 geht. der adc2 wert soll so skaliert werden, dass wenn adc1 0 hat der adc2 wert von -30 bis 30 geht und wenn adc1 100 ist ad2 von -100 bis 100 geht
+  - passt nicht, zur info der adc2 wird auch ausgelesen und schon vorher auf -100 bis 100 skaliert
+  - guter ansatz, ich möchte aber wenn adc1 0 ist das adc2 -100 bis 100 auf adc2 -30 bis 30 umgerechnet wird um den vollen wertebereich auszuschöpfen
 
 https://github.com/stlehmann/micropython-ssd1306/blob/master/ssd1306.py
 ## KW50
