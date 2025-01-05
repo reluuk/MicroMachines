@@ -142,7 +142,6 @@ def peer_connection(msg, voltage, percentage):
     lcd.move_to(0, 0)
     lcd.putstr(f"Batt: {round(voltage, 1)}V  {percentage}%")
 
-
 print("Auto ist bereit, Befehle zu empfangen.")
 
 try:
