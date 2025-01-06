@@ -268,7 +268,7 @@ Servo-Motor Ansteuerung per Joystick:
 - Verbindungen der ESP32-Platine, H-Brücke, DC Motor, Servo Motor, 5V Platine, LCD und Batterie mit Verdrahtungsleitungen erstellt
 ## KW 1 (30.12.2024 - 05.01.2025)
 ### Aktivitäten:
-- Erstellen eine Videoclips für die Präsentation (Bräu)
+- Erstellen eines Videoclips für die Präsentation (Bräu)
 ## KW2 (06.01.2025)
 ### Aktivitäten:
 - Letzte Feineinstellung am Auto (Reif + Bräu)
