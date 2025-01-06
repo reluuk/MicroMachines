@@ -29,7 +29,7 @@ battery_val = []
 # Servo-Setup für die Lenkung
 servo_pin = PWM(Pin(15), freq=50)  # 50 Hz für Servo
 
-# LCD
+# LCD Initialisierung
 i2c = I2C(scl=Pin(22), sda=Pin(21), freq=400000)
 devices = i2c.scan()
 if len(devices) == 0:
@@ -39,33 +39,34 @@ else:
         print("I2C addr: " + hex(device))
         lcd = I2cLcd(i2c, device, 2, 16)
 
+# Zählt Durchgänge der while Schleife mit
 counter = 0
 
 
 # Funktion zur Lenkung
 def steer_car(x_cmd):
+    # steuert Servo
     min_joystick = -100
     max_joystick = 100
     min_servo = 70
     max_servo = 112
     x_cmd = x_cmd
-    if x_cmd < -5 and x_cmd > -11:
+    if -5 > x_cmd > -11:
         x_cmd = -5
 
     # Mappe den Bereich von -100 bis 100 auf Servo-Winkel (ca. 40 bis 140)
     joystick_value = max(min_joystick, min(max_joystick, x_cmd))
 
-    # Perform the scaling
+    # Skalierung ausführen
     position = int(
         min_servo + (joystick_value - min_joystick) / (max_joystick - min_joystick) * (max_servo - min_servo))
 
-    # position = int((40 + x_cmd )* 0.9)
-    # print(position)
     servo_pin.duty(position)
 
 
 # Funktion zum Fahren
 def drive_car(y_cmd):
+    # steuert DC-Motor
     if y_cmd < 0:
         motor_in1.on()
         motor_in2.off()
@@ -86,34 +87,35 @@ def average_val(buffer, value, max_size=50):
     if len(buffer) > max_size:
         buffer.pop(0)  # Entfernt den ältesten Wert
     buffer = sum(buffer) / len(buffer) if buffer else 0
-    # print('B', buffer)
     return buffer
 
 
 def battery_measure():
     global battery_val
-    # Lese Joystickwerte und mappe auf Bereich -100 bis +100
+    # Batteriespannung in V
     voltage = Battery_Voltage.read_battery_voltage(adc.read())
     voltage = average_val(battery_val, voltage)
     return voltage
 
 
 def battery_percent(voltage):
+    # Batterieladung in %
     percentage = Battery_Voltage.calculate_battery_percentage(voltage)
     return percentage
 
 
 def battery_to_controller_command(voltage, percentage):
-    # print(f'Batteriespannung: {voltage}, Ladestand: {percentage}')
+    # Erstellt String zur Übertragung
     return f"{int(round(voltage, 1) * 1000)},{percentage}"
 
 
 # Callback für empfangene ESP-NOW-Nachrichten
-def on_receive(mac, message, percentage):
-    if message != None:
-        command = message.decode('utf-8')
-        x_cmd, y_cmd = map(int, command.split(","))
-        print(f"Empfangener Befehl: Lenkung {x_cmd}, Geschwindigkeit {y_cmd}")
+def on_receive(message, percentage):
+    # steuere das Auto, wenn Verbindung zu Controller besteht
+    if message is not None:
+        buffer = message.decode('utf-8')
+        x_cmd, y_cmd = map(int, buffer.split(","))
+        #print(f"Empfangener Befehl: Lenkung {x_cmd}, Geschwindigkeit {y_cmd}")
 
         # Steuere das Auto basierend auf den empfangenen Daten
         if percentage < 1:
@@ -121,19 +123,19 @@ def on_receive(mac, message, percentage):
             drive_car(0)
         else:
             steer_car(x_cmd)
-            if y_cmd > -10 and y_cmd < 10:
+            if -10 < y_cmd < 10:
                 y_cmd = 0
             drive_car(y_cmd)
 
 
-def peer_connection(msg, voltage, percentage):
-    # Überprüft ob vom Auto Nachrichten kommen
+def peer_connection(message, voltage, percentage):
+    # Überprüft, ob vom Controller Nachrichten kommen
     global counter
     if counter > 6:
         counter = 0
     else:
         counter += 1
-    if msg == None:
+    if message is None:
         lcd.move_to(0, 1)
         if percentage > 0:
             if counter > 3:
@@ -151,7 +153,7 @@ def peer_connection(msg, voltage, percentage):
             lcd.putstr(f"Battery low!   ")
         else:
             lcd.putstr(f"                ")
-        esp.irq(on_receive(host, msg, percentage))
+        esp.irq(on_receive(host, message, percentage))
     lcd.move_to(0, 0)
     if percentage > 0:
         lcd.putstr(f"Batt: {round(voltage, 1)}V  {percentage}%")
@@ -159,20 +161,16 @@ def peer_connection(msg, voltage, percentage):
         lcd.putstr(f"Batt: {round(voltage, 1)}V  {percentage}%  ")
 
 
-print("Auto ist bereit, Befehle zu empfangen.")
-
 try:
     while True:
         batt_v = battery_measure()
         batt_p = battery_percent(batt_v)
         command = battery_to_controller_command(batt_v, batt_p)
-        # print(batt_v)
-
-        esp.send(CONTROLLER_MAC, command.encode('utf-8'))
-        time.sleep_ms(20)  # Ruhemodus, das Empfangen läuft über den Callback
+        esp.send(CONTROLLER_MAC, command.encode('utf-8'))  # Sende die Batteriedaten an den Controller
+        time.sleep_ms(20)
         host, msg = esp.recv(200)
         peer_connection(msg, batt_v, batt_p)
-        esp.irq(on_receive(host, msg, batt_p))
+        esp.irq(on_receive(msg, batt_p))
 except:
     lcd.clear()
     pass
