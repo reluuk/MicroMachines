@@ -28,6 +28,38 @@ LED blinken lassen
 - Probieren der Kommunikation zwischen den ESP32 (alle)
 - Stecken der Schaltung zum Auslesen der Joysticks (Bräu)
 ### Code:
+Joystick auslesen:
+    from machine import ADC, Pin
+    import time
+
+    # Initialisierung der analogen Pins für X- und Y-Achse
+    x_pin = ADC(Pin(32))  # Pin für X-Achse
+    y_pin = ADC(Pin(33))  # Pin für Y-Achse
+
+    # Setze die Auflösung für die analogen Eingänge (optional)
+    x_pin.atten(ADC.ATTN_11DB)  # Bereich von 0 bis 3,6V
+    y_pin.atten(ADC.ATTN_11DB)  # Bereich von 0 bis 3,6V
+
+    # Initialisierung des digitalen Pins für den Button (optional)
+    #button_pin = Pin(32, Pin.IN, Pin.PULL_UP)
+
+    # Hauptschleife
+    while True:
+        # Lesen der X- und Y-Achsenwerte
+        x_value = x_pin.read()
+        y_value = y_pin.read()
+
+        # Lesen des Button-Status
+        #button_pressed = not button_pin.value()  # Taster ist gedrückt, wenn Wert 0
+
+        # Ausgabe der Werte
+        print("X-Achse:", x_value)
+        print("Y-Achse:", y_value)
+        #print("Button gedrückt:", button_pressed)
+
+        # Warte eine kurze Zeit, um die Anzeige lesbar zu machen
+        time.sleep(0.1)
+
 Mac-Adresse auslesen
 
     import network
