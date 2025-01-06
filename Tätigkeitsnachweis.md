@@ -274,5 +274,3 @@ Servo-Motor Ansteuerung per Joystick:
 ### Aktivitäten:
 - Letzte Feineinstellung am Auto (Reif + Bräu)
 - Fertigstellung der Dokumentation (Wolf)
-
-Auto und Controller fertiggestellt
