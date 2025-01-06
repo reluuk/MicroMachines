@@ -28,6 +28,38 @@ LED blinken lassen
 - Probieren der Kommunikation zwischen den ESP32 (alle)
 - Stecken der Schaltung zum Auslesen der Joysticks (Bräu)
 ### Code:
+Joystick auslesen:
+    from machine import ADC, Pin
+    import time
+
+    # Initialisierung der analogen Pins für X- und Y-Achse
+    x_pin = ADC(Pin(32))  # Pin für X-Achse
+    y_pin = ADC(Pin(33))  # Pin für Y-Achse
+
+    # Setze die Auflösung für die analogen Eingänge (optional)
+    x_pin.atten(ADC.ATTN_11DB)  # Bereich von 0 bis 3,6V
+    y_pin.atten(ADC.ATTN_11DB)  # Bereich von 0 bis 3,6V
+
+    # Initialisierung des digitalen Pins für den Button (optional)
+    #button_pin = Pin(32, Pin.IN, Pin.PULL_UP)
+
+    # Hauptschleife
+    while True:
+        # Lesen der X- und Y-Achsenwerte
+        x_value = x_pin.read()
+        y_value = y_pin.read()
+
+        # Lesen des Button-Status
+        #button_pressed = not button_pin.value()  # Taster ist gedrückt, wenn Wert 0
+
+        # Ausgabe der Werte
+        print("X-Achse:", x_value)
+        print("Y-Achse:", y_value)
+        #print("Button gedrückt:", button_pressed)
+
+        # Warte eine kurze Zeit, um die Anzeige lesbar zu machen
+        time.sleep(0.1)
+
 Mac-Adresse auslesen
 
     import network
@@ -78,6 +110,7 @@ ESP-NOW Receiver
 ### Quellen:
 - [ESP32 Mac-Adresse auslesen]https://stackoverflow.com/questions/71902740/how-to-retrieve-and-format-wifi-mac-address-in-micropython-on-esp32
 - [ESP-NOW Tutorial]https://docs.micropython.org/en/latest/library/espnow.html
+- [Joystick auslesen]nicht auffindbar/nicht in ChatGPT gefunden
 ## KW46 _(11. - 17.11.2024)_
 ### Aktivitäten:
 - Zusammenbau des RC-Autobausatzes (alle)
@@ -86,9 +119,43 @@ ESP-NOW Receiver
 - Bau eines Prototyps Controller aus Bastelholz (Bräu)
   - Montieren vom Steckbrett mit ESP 32 und Joysticks auf den Prototypen
 ### Code:
-- [Niklas]
+
+Servo-Motor Ansteuerung per Joystick:
+
+    from machine import ADC, Pin, PWM
+    import time
+
+    y_pin = ADC(Pin(33))
+    y_pin.atten(ADC.ATTN_11DB)  # Bereich von 0 bis 3,6V für den ADC
+
+    servo_pin = PWM(Pin(4), freq=50)  # 50 Hz ist die übliche Frequenz für Servos
+
+    servo_min = 47    # Minimaler Duty-Wert (0°)
+    servo_max = 95    # Maximaler Duty-Wert (180°)
+
+    def map_value(value, in_min, in_max, out_min, out_max):
+        """Skaliert den Wert von einem Bereich auf einen anderen."""
+        return int((value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min)
+
+    while True:
+        # Lese den Wert der Y-Achse
+        y_value = y_pin.read()
+    
+        # Mappe den Y-Achsen-Wert auf den Bereich des Servos
+        # Annahme: ADC-Wertbereich ist 0 bis 4095
+        servo_value = map_value(y_value, 0, 4095, servo_min, servo_max)
+    
+    # Setze den Servo-Winkel
+    servo_pin.duty(servo_value)
+    
+    # Ausgabe für Debugging
+    print("Y-Achse:", y_value, "Servo-Wert:", servo_value)
+    
+    # Wartezeit für Stabilität
+    time.sleep(0.2)
+
 ### Quellen:
-- [Niklas]
+- [Niklas]:nicht auffindbar/nicht in ChatGPT gefunden
 ## KW47 _(18. - 24.11.2024)_
 ### Aktivitäten:
 - Montage der Schaltung zur Ansteuerung vom RC-Auto auf den Auto (Bräu)
