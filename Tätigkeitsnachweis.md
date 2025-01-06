@@ -265,11 +265,11 @@ Servo-Motor Ansteuerung per Joystick:
   - Spannungsteiler für Batteriespannungsmessung auf ESP32-Platine angebracht
   - PCB-Schraubklemmen für Anschluss der Komponenten auf ESP32-Platine angebracht
   - Verbindungen von PCB-Schraubklemmen zu ESP32 an der ESP32-Platine mit Kupferlackdraht erstellt
-
 - Verbindungen der ESP32-Platine, H-Brücke, DC Motor, Servo Motor, 5V Platine, LCD und Batterie mit Verdrahtungsleitungen erstellt
-## KW1 (06.01.2025)
+## KW 1 (30.12.2024 - 05.01.2025)
 ### Aktivitäten:
-- Letzte Feineinstellung am Auto
-- Fertigstellung der Dokumentation
-
-Auto fertiggestellt
+- Erstellen eine Videoclips für die Präsentation (Bräu)
+## KW2 (06.01.2025)
+### Aktivitäten:
+- Letzte Feineinstellung am Auto (Reif + Bräu)
+- Fertigstellung der Dokumentation (Wolf)
