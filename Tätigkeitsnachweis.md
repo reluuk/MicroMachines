@@ -267,7 +267,7 @@ Servo-Motor Ansteuerung per Joystick:
   - Verbindungen von PCB-Schraubklemmen zu ESP32 an der ESP32-Platine mit Kupferlackdraht erstellt
 
 - Verbindungen der ESP32-Platine, H-Brücke, DC Motor, Servo Motor, 5V Platine, LCD und Batterie mit Verdrahtungsleitungen erstellt
-## KW1_(06.01.2025)_
+## KW1 (06.01.2025)
 ### Aktivitäten:
 - Letzte Feineinstellung am Auto
 - Fertigstellung der Dokumentation
