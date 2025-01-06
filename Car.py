@@ -16,9 +16,9 @@ CONTROLLER_MAC = b'\x10\x06\x1c\xd6J\x1c'  # MAC-Adresse Controller
 esp.add_peer(CONTROLLER_MAC)
 
 # Auto-Motor-Setup (H-Brücke)
-motor_in1 = Pin(27, Pin.OUT)
-motor_in2 = Pin(26, Pin.OUT)
-motor_pwm = PWM(Pin(25), freq=2000)
+motor_in1 = Pin(26, Pin.OUT)
+motor_in2 = Pin(25, Pin.OUT)
+motor_pwm = PWM(Pin(27), freq=2000)
 
 # Konfiguration für den ADC Batteriespannung
 adc = ADC(Pin(32))  # ADC an GPIO 34
@@ -66,10 +66,10 @@ def steer_car(x_cmd):
 
 # Funktion zum Fahren
 def drive_car(y_cmd):
-    if y_cmd > 0:
+    if y_cmd < 0:
         motor_in1.on()
         motor_in2.off()
-    elif y_cmd < 0:
+    elif y_cmd > 0:
         motor_in1.off()
         motor_in2.on()
     else:
@@ -109,17 +109,21 @@ def battery_to_controller_command(voltage, percentage):
 
 
 # Callback für empfangene ESP-NOW-Nachrichten
-def on_receive(mac, message):
+def on_receive(mac, message, percentage):
     if message != None:
         command = message.decode('utf-8')
         x_cmd, y_cmd = map(int, command.split(","))
-        # print(f"Empfangener Befehl: Lenkung {x_cmd}, Geschwindigkeit {y_cmd}")
+        print(f"Empfangener Befehl: Lenkung {x_cmd}, Geschwindigkeit {y_cmd}")
 
         # Steuere das Auto basierend auf den empfangenen Daten
-        steer_car(x_cmd)
-        if y_cmd > -10 and y_cmd < 10:
-            y_cmd = 0
-        drive_car(y_cmd)
+        if percentage < 1:
+            steer_car(0)
+            drive_car(0)
+        else:
+            steer_car(x_cmd)
+            if y_cmd > -10 and y_cmd < 10:
+                y_cmd = 0
+            drive_car(y_cmd)
 
 
 def peer_connection(msg, voltage, percentage):
@@ -131,16 +135,29 @@ def peer_connection(msg, voltage, percentage):
         counter += 1
     if msg == None:
         lcd.move_to(0, 1)
-        if counter > 3:
-            lcd.putstr(f"No connection  -")
+        if percentage > 0:
+            if counter > 3:
+                lcd.putstr(f"No connection  -")
+            else:
+                lcd.putstr(f"No connection - ")
         else:
-            lcd.putstr(f"No connection - ")
+            if counter > 3:
+                lcd.putstr(f"No connection   ")
+            else:
+                lcd.putstr(f"Battery low!   ")
     else:
         lcd.move_to(0, 1)
-        lcd.putstr(f"                ")
-        esp.irq(on_receive(host, msg))
+        if percentage < 1:
+            lcd.putstr(f"Battery low!   ")
+        else:
+            lcd.putstr(f"                ")
+        esp.irq(on_receive(host, msg, percentage))
     lcd.move_to(0, 0)
-    lcd.putstr(f"Batt: {round(voltage, 1)}V  {percentage}%")
+    if percentage > 0:
+        lcd.putstr(f"Batt: {round(voltage, 1)}V  {percentage}%")
+    else:
+        lcd.putstr(f"Batt: {round(voltage, 1)}V  {percentage}%  ")
+
 
 print("Auto ist bereit, Befehle zu empfangen.")
 
@@ -152,10 +169,10 @@ try:
         # print(batt_v)
 
         esp.send(CONTROLLER_MAC, command.encode('utf-8'))
-        time.sleep_ms(10)  # Ruhemodus, das Empfangen läuft über den Callback
-        host, msg = esp.recv(100)
+        time.sleep_ms(20)  # Ruhemodus, das Empfangen läuft über den Callback
+        host, msg = esp.recv(200)
         peer_connection(msg, batt_v, batt_p)
-        esp.irq(on_receive(host, msg))
+        esp.irq(on_receive(host, msg, batt_p))
 except:
     lcd.clear()
     pass
