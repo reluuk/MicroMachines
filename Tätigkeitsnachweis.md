@@ -8,7 +8,7 @@
 ## KW44 _(28.10. - 03.11.2024)_
 ### Aktivitäten:
 - Bestellung Einzelteile(ESP32-Frenove Kits, Batteriehalter,H-Brücken, Joysticks etc.) (Bräu)
-- Bestellung RC-Auto Bausatz (Bräu)
+- Bestellung RC-Auto Bausatz (Wolf)
 - erstes Mal ESP32 angeschlossen und LEDs blinken lassen (Reif)
 ### Code:
 LED blinken lassen
@@ -267,5 +267,9 @@ Servo-Motor Ansteuerung per Joystick:
   - Verbindungen von PCB-Schraubklemmen zu ESP32 an der ESP32-Platine mit Kupferlackdraht erstellt
 
 - Verbindungen der ESP32-Platine, H-Brücke, DC Motor, Servo Motor, 5V Platine, LCD und Batterie mit Verdrahtungsleitungen erstellt
- 
+## KW1_(06.01.2025)_
+### Aktivitäten:
+- Letzte Feineinstellung am Auto
+- Fertigstellung der Dokumentation
+
 Auto fertiggestellt
