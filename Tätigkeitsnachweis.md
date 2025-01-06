@@ -257,7 +257,7 @@ Servo-Motor Ansteuerung per Joystick:
   - da mehrere H-Brücken bestellt wurden, wurde der 5V Spannungsregler (78M05) einer H-Brücke auf eine extra Lochrasterplatine gelötet, das wird die Spannungsversorgung für den Servo
   - Online Schaltplan der H-Brücke war komplett falsch, ChatGPT liefert einen richtigen Schaltplan
 ### Quellen:
-- [H-Brücke]https://components101.com/modules/l293n-motor-driver-module
+- [H-Brücke mit falschem Schaltplan]https://components101.com/modules/l293n-motor-driver-module
 - [Datenblatt Spannungsregler 78M05]https://www.digikey.de/de/products/detail/umw/78M05/17635217
 - ChatGPT: wie regele ich eine spannung von 12v auf 5v mit einem 78m05
 ## KW52 _(23. - 29.12.2024)_
@@ -267,11 +267,19 @@ Servo-Motor Ansteuerung per Joystick:
   - PCB-Schraubklemmen für Anschluss der Komponenten auf ESP32-Platine angebracht
   - Verbindungen von PCB-Schraubklemmen zu ESP32 an der ESP32-Platine mit Kupferlackdraht erstellt
 
-- ESP32-Platine, H-Brücke, DC Motor, Servo Motor, 5V Platine, LCD und Batterie verdrahtet
-## KW1 (30.12.2024 - 05.01.2025)
+- ESP32-Platine, H-Brücke, DC Motor, Servo Motor, 5V Platine, LCD und Batterie verdrahtet (Reif)
+- Bastelholz für Controller als Montageplatte ausgesägt (Bräu)
+- Lötarbeiten am Controller: (Bräu)
+  - ESP32 direkt auf Lochrasterplatine aufgelötet
+  - OLED Display auf Lochrasterplatine aufgelötet
+  - OLED Display auf Bastelholz montiert und mit ESP32 verbunden
+  - Joysticks auf Bastelholz montiert und mit ESP32 verbunden
+  - Potentiometer auf Bastelholz montiert und mit ESP32 verbunden
+  - LiPo Akkupack auf der Rückseite des Bastelholzes montiert und als 5V Spannungsquelle mit ESP32 verbunden
+## KW1 _(30.12.2024 - 05.01.2025)_
 ### Aktivitäten:
 - Erstellen eines Videoclips für die Präsentation (Bräu)
-## KW2 (06.01.2025)
+## KW2 _(06.01.2025)_
 ### Aktivitäten:
 - Letzte Feineinstellung am Auto (Reif + Bräu)
 - Fertigstellung der Dokumentation (Wolf)
